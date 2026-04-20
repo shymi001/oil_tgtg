@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>AutoParts Shop</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M5 15.5L7.2 9.8C7.59 8.79 8.56 8.12 9.64 8.12H14.36C15.44 8.12 16.41 8.79 16.8 9.8L19 15.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+            <path d="M4.5 15.5H19.5V17.3C19.5 18.02 18.92 18.6 18.2 18.6H17.1C16.38 18.6 15.8 18.02 15.8 17.3V16.9H8.2V17.3C8.2 18.02 7.62 18.6 6.9 18.6H5.8C5.08 18.6 4.5 18.02 4.5 17.3V15.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+            <circle cx="7.6" cy="14.2" r="1.1" fill="currentColor"/>
+            <circle cx="16.4" cy="14.2" r="1.1" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="brand-copy">
+          <small>Mini App Store</small>
+          <h1>AutoParts Shop</h1>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <div class="topbar-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M12 6V12L15.8 14.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.8"/>
+          </svg>
+        </div>
+        <div class="topbar-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M12 4.5L14.4 9.36L19.76 10.14L15.88 13.92L16.8 19.26L12 16.74L7.2 19.26L8.12 13.92L4.24 10.14L9.6 9.36L12 4.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero-card">
+        <span class="section-kicker">Performance parts</span>
+        <h2>Find the right parts for every drive.</h2>
+        <p>Modern automotive components, fast add-to-cart flow, and a polished mobile experience inspired by Telegram Mini Apps.</p>
+        <div class="hero-badges">
+          <div class="hero-badge">Fast order flow</div>
+          <div class="hero-badge">Top-rated parts</div>
+          <div class="hero-badge">Mobile-first UI</div>
+        </div>
+      </section>
+
+      <div class="section-header">
+        <div>
+          <span class="section-kicker">Catalog</span>
+          <h3>Popular products</h3>
+        </div>
+        <span>Tap to add</span>
+      </div>
+
+      <section class="products-grid" id="products"></section>
+
+      <div class="floating-pill">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M5 12H19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M12 5L19 12L12 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Interactive dark storefront with a live cart and messenger shortcuts
+      </div>
+    </main>
+  </div>
+
+  <button class="cart-fab" id="cartFab" aria-label="Open cart">
+    <span class="cart-button-icon" aria-hidden="true">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M5 7.5H19L17.7 14.1C17.56 14.79 16.96 15.3 16.26 15.3H9.02C8.32 15.3 7.72 14.79 7.58 14.1L6.2 6.9C6.06 6.2 5.46 5.7 4.76 5.7H4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="9.5" cy="18.3" r="1.2" fill="currentColor"/>
+        <circle cx="15.8" cy="18.3" r="1.2" fill="currentColor"/>
+      </svg>
+    </span>
+    <span>Cart</span>
+    <span class="cart-count" id="cartCount">0</span>
+  </button>
+
+  <div class="cart-backdrop" id="cartModal" aria-hidden="true">
+    <div class="cart-panel" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+      <div class="cart-top">
+        <div>
+          <span class="section-kicker">Your order</span>
+          <h4 id="cartTitle">Shopping cart</h4>
+        </div>
+        <button class="close-cart" id="closeCart" aria-label="Close cart">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M6 6L18 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-summary">
+        <span>Total</span>
+        <strong id="cartTotal">$0</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-bar">
+    <a class="contact-chip whatsapp" href="https://wa.me/87052264986" target="_blank" rel="noopener noreferrer">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 20C16.42 20 20 16.42 20 12C20 7.58 16.42 4 12 4C7.58 4 4 7.58 4 12C4 13.7 4.53 15.29 5.43 16.6L4.7 20L8.22 19.17C9.41 19.72 10.73 20 12 20Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+        <path d="M9.1 8.8C9.32 8.32 9.56 8.3 9.89 8.31C10.16 8.32 10.47 8.31 10.74 8.31C11.01 8.31 11.44 8.21 11.83 9.05C12.23 9.89 13.18 12.14 13.31 12.35C13.44 12.56 13.53 12.82 13.37 13.08C13.2 13.34 13.12 13.5 12.87 13.78C12.63 14.06 12.36 14.4 12.65 14.82C12.94 15.23 13.93 16.83 15.44 17.48C16.69 18.02 16.84 17.96 17.13 17.93C17.41 17.9 18.03 17.56 18.29 16.83C18.55 16.1 18.55 15.47 18.47 15.33C18.39 15.2 18.18 15.12 17.88 14.98C17.58 14.85 16.08 14.11 15.81 14.01C15.54 13.91 15.34 13.86 15.14 14.14C14.94 14.42 14.37 15.08 14.2 15.28C14.03 15.48 13.86 15.5 13.56 15.37C13.26 15.23 12.29 14.92 11.14 13.9C10.25 13.11 9.65 12.12 9.48 11.82C9.31 11.52 9.46 11.35 9.61 11.2C9.74 11.08 9.9 10.88 10.05 10.7C10.2 10.52 10.25 10.39 10.35 10.19C10.45 9.99 10.4 9.82 10.33 9.68C10.25 9.54 9.67 8.08 9.43 7.54C9.24 7.1 9.05 7.16 8.89 7.15C8.68 7.14 8.43 7.14 8.18 7.14C7.93 7.14 7.52 7.24 7.18 7.6C6.84 7.96 5.9 8.84 5.9 10.65C5.9 12.46 7.22 14.21 7.4 14.45C7.58 14.68 9.98 18.47 13.67 19.62" fill="currentColor" fill-opacity="0.16"/>
+      </svg>
+      WhatsApp
+    </a>
+    <a class="contact-chip telegram" href="https://t.me/teovan01" target="_blank" rel="noopener noreferrer">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M21 5L3.8 11.62C2.63 12.08 2.64 12.74 3.59 13.03L8 14.4L17.8 8.22C18.26 7.94 18.68 8.09 18.34 8.39L10.4 15.55L10.1 20.2C10.54 20.2 10.73 20 10.98 19.76L13.12 17.68L17.57 20.96C18.39 21.41 18.98 21.18 19.18 20.2L22.11 6.39C22.4 5.19 21.68 4.65 21 5Z" fill="currentColor"/>
+      </svg>
+      Telegram
+    </a>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
